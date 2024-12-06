@@ -71,12 +71,12 @@ class HomePage extends StatelessWidget {
                       ),
                       tileColor: isSelected
                           ? Colors.blue.shade100
-                          : null, // Cor para indicar seleção
+                          : null,
                       shape: RoundedRectangleBorder(
                         side: isSelected
                             ? BorderSide(
                                 color: Colors.blue,
-                                width: 2) // Borda azul para seleção
+                                width: 2)
                             : BorderSide.none,
                         borderRadius: BorderRadius.circular(12),
                       ),

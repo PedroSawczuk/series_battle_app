@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:series_battle/models/seriesModel.dart';
-import 'package:series_battle/services/battleServices.dart'; // Importando o serviço de batalhas
-import 'package:series_battle/views/homePage.dart'; // Importando a HomePage
+import 'package:series_battle/services/battleServices.dart';
+import 'package:series_battle/controllers/seriesController.dart'; // Importando o SeriesController
+import 'package:series_battle/views/homePage.dart';
 
 class ComparisonPage extends StatelessWidget {
   final SeriesModel series1;
@@ -11,6 +12,7 @@ class ComparisonPage extends StatelessWidget {
   ComparisonPage({Key? key, required this.series1, required this.series2}) : super(key: key);
 
   final BattleServices _battleServices = BattleServices();
+  final SeriesController _seriesController = Get.find();  // Pegando o SeriesController já instanciado
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,8 @@ class ComparisonPage extends StatelessWidget {
                   onPressed: () async {
                     await _battleServices.saveBattleResult(series1);
                     Get.snackbar('Série Vencedora', 'Você escolheu ${series1.name} como vencedora');
-                    Get.offAll(HomePage());  // Navegar para a HomePage
+                    _seriesController.clearSelectedSeries();  // Limpa a seleção
+                    Get.offAll(HomePage());
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade800,
@@ -58,7 +61,8 @@ class ComparisonPage extends StatelessWidget {
                   onPressed: () async {
                     await _battleServices.saveBattleResult(series2);
                     Get.snackbar('Série Vencedora', 'Você escolheu ${series2.name} como vencedora');
-                    Get.offAll(HomePage());  // Navegar para a HomePage
+                    _seriesController.clearSelectedSeries();  // Limpa a seleção
+                    Get.offAll(HomePage());
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green.shade800,
