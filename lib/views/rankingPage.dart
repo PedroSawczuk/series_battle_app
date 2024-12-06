@@ -10,7 +10,13 @@ class RankingPage extends StatelessWidget {
     return Scaffold(
       drawer: DrawerCustom(),
       appBar: AppBar(
-        title: Text("Ranking de Vitórias"),
+        title: Text(
+          "Ranking de Vitórias",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.red.shade800,
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(

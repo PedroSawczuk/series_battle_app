@@ -6,20 +6,20 @@ class BattleServices {
 
   Future<void> saveBattleResult(SeriesModel winner) async {
     try {
-      String userId = DateTime.now().millisecondsSinceEpoch.toString();
+      // Usar o nome da série como o ID do documento
+      DocumentReference seriesDoc = _firestore.collection('battle_results').doc(winner.name);
 
-      DocumentReference userDoc = _firestore.collection('battle_results').doc(userId);
-
-      DocumentSnapshot snapshot = await userDoc.get();
+      DocumentSnapshot snapshot = await seriesDoc.get();
 
       if (snapshot.exists) {
-        await userDoc.update({
+        // Se a série já existir, incrementa o número de vitórias
+        await seriesDoc.update({
           'wins': FieldValue.increment(1),
-          'series_name': winner.name,
           'battle_date': FieldValue.serverTimestamp(),
         });
       } else {
-        await userDoc.set({
+        // Se a série não existir, cria um novo documento com a contagem inicial de vitórias
+        await seriesDoc.set({
           'wins': 1,
           'series_name': winner.name,
           'battle_date': FieldValue.serverTimestamp(),

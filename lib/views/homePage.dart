@@ -82,6 +82,19 @@ class HomePage extends StatelessWidget {
                       ),
                       onTap: () {
                         _seriesController.toggleSelectedSerie(serie);
+
+                        // Mostrar o Snackbar com a série selecionada ou removida
+                        String message = isSelected
+                            ? 'Série ${serie.name} removida da seleção'
+                            : 'Série ${serie.name} adicionada à seleção';
+                        Get.snackbar(
+                          'Seleção de Série',
+                          message,
+                          snackPosition: SnackPosition.TOP,
+                          backgroundColor: Colors.black.withOpacity(0.7),
+                          colorText: Colors.white,
+                          duration: Duration(seconds: 2),
+                        );
                       },
                     );
                   },

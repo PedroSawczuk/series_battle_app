@@ -10,7 +10,6 @@ class RankingService {
           .orderBy('wins', descending: true)
           .get();
 
-      // Converte os dados para uma lista
       List<Map<String, dynamic>> ranking = querySnapshot.docs.map((doc) {
         return {
           'series_name': doc['series_name'],

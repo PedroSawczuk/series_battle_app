@@ -1,16 +1,19 @@
-# series_battle
+# Batalha de Séries
+Aplicativo feito para a Disciplina de Tópicos Avançados de Programação do Prof. Me. Andrey Alencar Quadros.
 
-A new Flutter project.
+# O que é o Aplicativo?
+O aplicativo Batalha de Séries permite aos usuários comparar duas séries de TV e votar em qual delas é a vencedora. A cada batalha, o aplicativo registra os votos e atualiza um ranking com as séries mais votadas. O usuário pode visualizar o ranking das séries com o maior número de vitórias e também participar de comparações dinâmicas entre as séries.
 
-## Getting Started
+# Tecnologias e Ferramentas Utilizadas
 
-This project is a starting point for a Flutter application.
+1. Flutter
+2. Firebase
+3. GetX
+4. Dio
+5. TMDB API
+6. Printing e PDF
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Desenvolvedor
+Nome: Pedro Henrique Sawczuk Monteiro
+Disciplina: Tópicos Avançados de Programação
+Matrícula: 2022105100002

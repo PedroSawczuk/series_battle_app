@@ -24,6 +24,7 @@ class ComparisonPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,  // Centraliza os filhos na coluna
           children: [
             _buildSerieCard(series1),
             SizedBox(height: 20),
@@ -34,8 +35,8 @@ class ComparisonPage extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // Colocando os botões em uma coluna para ficarem embaixo um do outro
+            Column(
               children: [
                 ElevatedButton(
                   onPressed: () async {
@@ -57,6 +58,7 @@ class ComparisonPage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ),
+                SizedBox(height: 16), // Espaçamento entre os botões
                 ElevatedButton(
                   onPressed: () async {
                     await _battleServices.saveBattleResult(series2);
