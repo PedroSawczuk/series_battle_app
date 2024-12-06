@@ -43,6 +43,7 @@ dependencies:
   firebase_core: ^3.8.1
   printing: ^5.13.4
   pdf: ^3.11.1
+  onesignal_flutter: ^5.2.8
 
 dev_dependencies:
   flutter_test:

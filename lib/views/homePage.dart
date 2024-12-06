@@ -19,22 +19,21 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: DrawerCustom(),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.picture_as_pdf),
+            onPressed: () {
+              _pdfServices.generateRankingPdf();
+            },
+          ),
+        ],
         title: Text(
-          'Movie App',
+          'Series App',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.picture_as_pdf),
-            onPressed: () {
-              // Chama o serviço para gerar o PDF com o ranking
-              _pdfServices.generateRankingPdf();
-            },
-          ),
-        ],
         backgroundColor: Colors.red.shade800,
       ),
       body: Stack(
@@ -70,10 +69,14 @@ class HomePage extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      tileColor: isSelected ? Colors.blue.shade100 : null,
+                      tileColor: isSelected
+                          ? Colors.blue.shade100
+                          : null, // Cor para indicar seleção
                       shape: RoundedRectangleBorder(
                         side: isSelected
-                            ? BorderSide(color: Colors.blue, width: 2)
+                            ? BorderSide(
+                                color: Colors.blue,
+                                width: 2) // Borda azul para seleção
                             : BorderSide.none,
                         borderRadius: BorderRadius.circular(12),
                       ),
