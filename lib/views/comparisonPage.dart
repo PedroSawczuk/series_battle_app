@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:series_battle/models/seriesModel.dart';
+import 'package:series_battle/services/battleServices.dart'; // Importando o serviço de batalhas
+import 'package:series_battle/views/homePage.dart'; // Importando a HomePage
 
 class ComparisonPage extends StatelessWidget {
   final SeriesModel series1;
   final SeriesModel series2;
 
   ComparisonPage({Key? key, required this.series1, required this.series2}) : super(key: key);
+
+  final BattleServices _battleServices = BattleServices();
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +36,10 @@ class ComparisonPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await _battleServices.saveBattleResult(series1);
                     Get.snackbar('Série Vencedora', 'Você escolheu ${series1.name} como vencedora');
+                    Get.offAll(HomePage());  // Navegar para a HomePage
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade800,
@@ -49,8 +55,10 @@ class ComparisonPage extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await _battleServices.saveBattleResult(series2);
                     Get.snackbar('Série Vencedora', 'Você escolheu ${series2.name} como vencedora');
+                    Get.offAll(HomePage());  // Navegar para a HomePage
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green.shade800,

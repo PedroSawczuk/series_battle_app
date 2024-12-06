@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:series_battle/components/drawerCustom.dart';
 import 'package:series_battle/controllers/seriesController.dart';
 import 'package:series_battle/models/seriesModel.dart';
 import 'package:series_battle/services/seriesServices.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: DrawerCustom(),
       appBar: AppBar(
         title: Text(
           'Movie App',
@@ -55,10 +57,10 @@ class HomePage extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      tileColor: isSelected ? Colors.blue.shade100 : null, // Cor para indicar seleção
+                      tileColor: isSelected ? Colors.blue.shade100 : null,
                       shape: RoundedRectangleBorder(
                         side: isSelected
-                            ? BorderSide(color: Colors.blue, width: 2) // Borda azul para seleção
+                            ? BorderSide(color: Colors.blue, width: 2)
                             : BorderSide.none,
                         borderRadius: BorderRadius.circular(12),
                       ),
