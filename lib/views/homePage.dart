@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:series_battle/components/serieCard.dart';
-import 'package:series_battle/controllers/seriesController.dart';
 import 'package:series_battle/models/seriesModel.dart';
 import 'package:series_battle/services/seriesServices.dart';
+import 'package:series_battle/views/DetailSeriePage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final SeriesServices _seriesServices = SeriesServices();
-  final SeriesController _seriesController = Get.put(SeriesController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,10 @@ class HomePage extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      onTap: () => _seriesController.selectSerie(serie),
+                      onTap: () {
+                        // Redireciona para a tela de detalhes
+                        Get.to(DetailSerie(serie: serie));
+                      },
                     );
                   },
                 );
@@ -63,18 +64,9 @@ class HomePage extends StatelessWidget {
               }
             },
           ),
-          Obx(() {
-            final selectedSerie = _seriesController.selectedSerie.value;
-            if (selectedSerie != null) {
-              return SerieCard(
-                serie: selectedSerie,
-                onClose: () => _seriesController.clearSelection(),
-              );
-            }
-            return SizedBox.shrink();
-          }),
         ],
       ),
     );
   }
 }
+

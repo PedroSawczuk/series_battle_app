@@ -11,4 +11,12 @@ class SeriesController extends GetxController {
   void clearSelection() {
     selectedSerie.value = null;
   }
+
+  void toggleComparison(SeriesModel serie) {
+    if (selectedSerie.value == serie) {
+      clearSelection();
+    } else {
+      selectSerie(serie);
+    }
+  }
 }

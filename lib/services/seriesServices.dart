@@ -17,11 +17,9 @@ class SeriesServices {
         List<dynamic> results = response.data['results'];
         return results.map((movie) => SeriesModel.fromJson(movie)).toList();
       } else {
-        print('Resposta inesperada: ${response.statusCode}');
         throw Exception('Erro ao carregar filmes populares');
       }
     } catch (e) {
-      print('Erro na requisição: $e');
       throw Exception('Erro na requisição: $e');
     }
   }
