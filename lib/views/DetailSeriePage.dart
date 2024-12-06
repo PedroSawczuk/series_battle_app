@@ -36,28 +36,7 @@ class DetailSerie extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            SizedBox(height: 16), // Espaço entre o texto e o botão
-            ElevatedButton.icon(
-              onPressed: () {
-                // Não faz nada quando pressionado (sem funcionalidade)
-              },
-              icon: Icon(
-                Icons.compare_arrows, // Ícone de comparação
-                size: 20,
-              ),
-              label: Text(
-                'Comparar',
-                style: TextStyle(fontSize: 18),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red.shade800, // Cor do botão
-                padding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // Bordas arredondadas
-                ),
-                elevation: 5, // Sombra para dar um efeito de elevação
-              ),
-            ),
+            SizedBox(height: 16),
           ],
         ),
       ),
