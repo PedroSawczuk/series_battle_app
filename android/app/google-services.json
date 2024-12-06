@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912535486178",
+    "project_id": "series-battle-app",
+    "storage_bucket": "series-battle-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912535486178:android:3c2de8d9466743e22c28bb",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJlCYbTT7mWwtp9xT8jttrCwCcX9wNDig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
