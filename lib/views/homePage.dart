@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:series_battle/components/drawerCustom.dart';
 import 'package:series_battle/controllers/seriesController.dart';
 import 'package:series_battle/models/seriesModel.dart';
+import 'package:series_battle/services/pdfServices.dart';
 import 'package:series_battle/services/seriesServices.dart';
 import 'package:series_battle/views/comparisonPage.dart';
 
@@ -11,6 +12,7 @@ class HomePage extends StatelessWidget {
 
   final SeriesServices _seriesServices = SeriesServices();
   final SeriesController _seriesController = Get.put(SeriesController());
+  final PdfServices _pdfServices = PdfServices();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,15 @@ class HomePage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.picture_as_pdf),
+            onPressed: () {
+              // Chama o serviço para gerar o PDF com o ranking
+              _pdfServices.generateRankingPdf();
+            },
+          ),
+        ],
         backgroundColor: Colors.red.shade800,
       ),
       body: Stack(
@@ -45,10 +56,12 @@ class HomePage extends StatelessWidget {
                   itemCount: series.length,
                   itemBuilder: (context, index) {
                     final serie = series[index];
-                    final isSelected = _seriesController.selectedSeries.contains(serie);
+                    final isSelected =
+                        _seriesController.selectedSeries.contains(serie);
 
                     return ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                       leading: Image.network(
                           'https://image.tmdb.org/t/p/w500/${serie.posterPath}'),
                       title: Text(serie.name),
@@ -85,9 +98,11 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 final selectedSeries = _seriesController.selectedSeries;
                 if (selectedSeries.length == 2) {
-                  Get.to(() => ComparisonPage(series1: selectedSeries[0], series2: selectedSeries[1]));
+                  Get.to(() => ComparisonPage(
+                      series1: selectedSeries[0], series2: selectedSeries[1]));
                 } else {
-                  Get.snackbar('Seleção Incompleta', 'Por favor, selecione duas séries para comparar.');
+                  Get.snackbar('Seleção Incompleta',
+                      'Por favor, selecione duas séries para comparar.');
                 }
               },
               icon: Icon(
@@ -97,7 +112,10 @@ class HomePage extends StatelessWidget {
               ),
               label: Text(
                 'Comparar',
-                style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red.shade800,
